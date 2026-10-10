@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>StudySpark AI</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <!-- Decorative background shapes -->
+
+    <div class="background-shape shape-one"></div>
+    <div class="background-shape shape-two"></div>
+    <div class="background-shape shape-three"></div>
+
+
+    <div class="app">
+
+
+        <!-- ================= SIDEBAR ================= -->
+
+        <aside class="sidebar">
+
+            <div class="brand">
+
+                <div class="brand-icon">
+                    🧠
+                </div>
+
+                <div>
+                    <h2>StudySpark</h2>
+                    <span>AI Study Buddy</span>
+                </div>
+
+            </div>
+
+
+            <button
+                class="new-chat-btn"
+                onclick="newChat()">
+
+                <span class="plus-icon">＋</span>
+
+                New Study Chat
+
+            </button>
+
+            
+    <!-- RECENT CONVERSATIONS -->
+    <div class="recent-chats-section">
+        <p class="section-title">🕘 Recent Chats</p>
+        <div id="recentChats" class="recent-chats-list">
+            <p class="recent-chats-empty">Loading chats...</p>
+        </div>
+    </div>
+ 
+
+
+           <div class="sidebar-section">
+
+                <p class="section-title">
+                    ✨ Your Study Space
+                </p>
+
+
+                <div class="feature-card">
+
+                    <div class="feature-icon purple">
+                        💡
+                    </div>
+
+                    <div>
+                        <strong>Learn Anything</strong>
+
+                        <small>
+                            Ask questions about any topic
+                        </small>
+                    </div>
+
+                </div>
+
+
+                <div class="feature-card">
+
+                    <div class="feature-icon pink">
+                        🚀
+                    </div>
+
+                    <div>
+                        <strong>Study Smarter</strong>
+
+                        <small>
+                            Get simple explanations
+                        </small>
+                    </div>
+
+                </div>
+
+
+                <div class="feature-card">
+
+                    <div class="feature-icon blue">
+                        📚
+                    </div>
+
+                    <div>
+                        <strong>Build Knowledge</strong>
+
+                        <small>
+                            Learn step by step
+                        </small>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="sidebar-bottom">
+
+                <div class="mini-profile">
+
+                    <div class="profile-avatar">
+                        🎓
+                    </div>
+
+                    <div>
+                        <strong>Student</strong>
+
+                        <span>
+                            Keep learning! 🌟
+                        </span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </aside>
+
+
+
+        <!-- ================= MAIN CHAT ================= -->
+
+        <main class="chat-area">
+
+
+            <!-- Header -->
+
+            <header class="chat-header">
+
+                <div class="header-left">
+
+                    <div class="bot-avatar">
+                        🤖
+                    </div>
+
+                    <div>
+
+                        <h1>
+                            AI Study Assistant
+                        </h1>
+
+                        <p>
+                            Your friendly AI learning companion
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="online-status">
+
+                    <span class="online-dot"></span>
+
+                    <span>AI Online</span>
+
+                </div>
+
+            </header>
+
+
+
+            <!-- Chat content -->
+
+            <section
+                id="chatMessages"
+                class="chat-messages">
+
+
+                <!-- Welcome card -->
+
+                <div class="welcome-card">
+
+                    <div class="welcome-icon">
+                        ✨
+                    </div>
+
+                    <h2>
+                        Hey there, future genius! 👋
+                    </h2>
+
+                    <p>
+                        I'm StudySpark, your AI study buddy.
+                        Ask me anything and let's learn
+                        something amazing together!
+                    </p>
+
+
+                    <div class="suggestions">
+
+                        <button
+                            onclick="useSuggestion('Explain photosynthesis in simple words')">
+
+                            🌱 Explain photosynthesis
+
+                        </button>
+
+
+                        <button
+                            onclick="useSuggestion('Help me understand algebra')">
+
+                            🔢 Help with algebra
+
+                        </button>
+
+
+                        <button
+                            onclick="useSuggestion('What are the main parts of a cell?')">
+
+                            🔬 Learn about cells
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Initial assistant message -->
+
+                <div class="message assistant-message">
+
+                    <div class="avatar assistant-avatar">
+                        🤖
+                    </div>
+
+                    <div class="message-content">
+
+                        <div class="message-name">
+                            StudySpark
+                        </div>
+
+                        <div class="bubble assistant-bubble">
+
+                            <p>
+                                Hello! 🌟 I'm ready to help you
+                                learn. What would you like to
+                                study today?
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </section>
+
+
+
+            <!-- Input -->
+
+            <div class="input-wrapper">
+
+                <div class="input-box">
+
+                    <textarea
+                        id="messageInput"
+                        placeholder="Ask me anything about your studies..."
+                        rows="1"
+                        onkeydown="handleKeyDown(event)">
+                    </textarea>
+
+
+                    <button
+                        id="sendButton"
+                        class="send-button"
+                        onclick="sendMessage()">
+
+                        <span>Send</span>
+
+                        <span class="send-icon">
+                            ➤
+                        </span>
+
+                    </button>
+
+                </div>
+
+
+                <div class="input-hint">
+
+                    <span>
+                        💡 Tip: Ask for explanations,
+                        examples, or step-by-step help
+                    </span>
+
+                    <span>
+                        Enter ↵ to send
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- Footer -->
+
+            <footer>
+
+                <span>
+                    Made for curious minds 🧠✨
+                </span>
+
+                <span>
+                    AI answers may occasionally contain mistakes.
+                </span>
+
+            </footer>
+
+
+        </main>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
